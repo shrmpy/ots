@@ -14,8 +14,8 @@ confinement: strict
 
 architectures:
   - build-on: amd64
-  - build-on: i386
-  - build-on: armhf
+
+
   - build-on: arm64
 
 apps:
@@ -32,10 +32,13 @@ apps:
 parts:
   ots-build:
     plugin: make
-    source: svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_2020/
-    source-type: subversion
+    source:
+        - on armhf: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux32.tgz/download
+        - on arm64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux64.tgz/download
+        - on amd64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux64.tgz/download
+    source-type: tar
+    source-subdir: src
     override-build: |
-        cd src
         sed -i 's_\.\./__g' Makefile
         mkdir bin
         make
