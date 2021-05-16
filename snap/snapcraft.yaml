@@ -46,6 +46,7 @@ parts:
         make
         cp -r bin $SNAPCRAFT_PART_INSTALL/
         cp Run_taxsolve_GUI $SNAPCRAFT_PART_INSTALL/
+        cp -r ../tax_form_files $SNAPCRAFT_PART_INSTALL/
 
 
   gui-build:
