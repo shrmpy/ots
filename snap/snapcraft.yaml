@@ -1,0 +1,90 @@
+name: otax
+title: OTS 2020
+version: "18.08"
+summary: OpenTaxSolver 2020
+description: |
+  This is a snap of OpenTaxSolver 2020 rev.
+  More info at https://opensource.com/article/21/2/linux-tax-software
+
+
+grade: stable
+
+base: core20
+confinement: strict
+
+architectures:
+  - build-on: amd64
+  - build-on: i386
+  - build-on: armhf
+  - build-on: arm64
+
+apps:
+  otax:
+    command: desktop-launch $SNAP/Run_taxsolve_GUI
+    plugs: 
+      - x11
+      - unity7
+      - home
+    environment: 
+      DISABLE_WAYLAND: 1
+
+
+parts:
+  ots-build:
+    plugin: make
+    source: svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_2020/
+    source-type: subversion
+    override-build: |
+        cd src
+        sed -i 's_\.\./__g' Makefile
+        mkdir bin
+        make
+        cp -r bin $SNAPCRAFT_PART_INSTALL/
+        cp Run_taxsolve_GUI $SNAPCRAFT_PART_INSTALL/
+
+
+  gui-build:
+    plugin: make
+    source: .
+    override-pull: |
+        cp -R $SNAPCRAFT_PART_SRC/../../ots-build/src/* $SNAPCRAFT_PART_SRC/
+    override-build: |
+        cd src/Gui_gtk
+        sed -i 's_\.\./__g' makefile
+        mkdir bin
+        make
+        cp -r bin $SNAPCRAFT_PART_INSTALL/
+
+    build-packages:
+        - libgtk2.0-dev
+    after:
+        - ots-build
+
+
+  desktop-gtk2:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk2"]
+    build-packages:
+      - build-essential
+      - libgtk2.0-dev
+    stage-packages:
+      - libxkbcommon0  # XKB_CONFIG_ROOT
+        #missing      - ttf-ubuntu-font-family
+        #?      - dmz-cursor-theme
+        #?      - light-themes
+        #already      - adwaita-icon-theme
+      - gnome-themes-standard
+      - shared-mime-info
+      - libgtk2.0-0
+      - libgdk-pixbuf2.0-0
+      - libglib2.0-bin
+      - libgtk2.0-bin
+        #missing      - unity-gtk2-module
+      - locales-all
+      - libappindicator1
+      - xdg-user-dirs
+      - ibus-gtk
+      - libibus-1.0-5
+
