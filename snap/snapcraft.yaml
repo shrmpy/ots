@@ -20,7 +20,7 @@ architectures:
 
 apps:
   otax:
-    command: desktop-launch $SNAP/Run_taxsolve_GUI
+    command: bin/desktop-launch $SNAP/Run_taxsolve_GUI
     plugs: 
       - x11
       - unity7
