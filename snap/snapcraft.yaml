@@ -20,7 +20,7 @@ architectures:
 
 apps:
   otax:
-    command: bin/desktop-launch $SNAP/Run_taxsolve_GUI
+    command: bin/desktop-launch $SNAP/bin/wrapper.sh
     plugs: 
       - x11
       - unity7
@@ -46,6 +46,8 @@ parts:
         cp -r bin $SNAPCRAFT_PART_INSTALL/
         cp Run_taxsolve_GUI $SNAPCRAFT_PART_INSTALL/
         cp -r ../tax_form_files $SNAPCRAFT_PART_INSTALL/
+        mkdir $SNAPCRAFT_PART_INSTALL/src
+        cp -r formdata $SNAPCRAFT_PART_INSTALL/src/
 
 
   gui-build:
@@ -92,4 +94,13 @@ parts:
       - xdg-user-dirs
       - ibus-gtk
       - libibus-1.0-5
+
+
+  wrapper:
+    plugin: dump
+    source: snap/local
+    organize:
+      'wrapper.sh': 'bin/wrapper.sh'
+      'default-script': 'example-script'
+    after: [ots-build]
 

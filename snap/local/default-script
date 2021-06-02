@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+if [[ -z $PDF_VIEWER ]]; then
+      PDF_VIEWER=evince
+fi
+
+exec $SNAP/Run_taxsolve_GUI -verbose -debug
