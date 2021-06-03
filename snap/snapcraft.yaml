@@ -27,6 +27,7 @@ apps:
       - home
     environment: 
       DISABLE_WAYLAND: 1
+      GTK_USE_PORTAL: "1"
 
 
 parts:
