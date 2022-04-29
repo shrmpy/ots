@@ -1,9 +1,9 @@
 name: otax
-title: OTS 2020
-version: "18.08"
-summary: OpenTaxSolver 2020
+title: OTS 2021
+version: "19.07"
+summary: OpenTaxSolver 2021
 description: |
-  This is a snap of OpenTaxSolver rev 2020.
+  This is a snap of OpenTaxSolver rev 2021.
   More info at https://opensource.com/article/21/2/linux-tax-software
 
 
@@ -34,9 +34,9 @@ parts:
   ots-build:
     plugin: make
     source:
-        - on armhf: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux32.tgz/download
-        - on arm64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux64.tgz/download
-        - on amd64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2020/v18.08_linux/OpenTaxSolver2020_18.08_linux64.tgz/download
+        - on armhf: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux32.tgz/download
+        - on arm64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux64.tgz/download
+        - on amd64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux64.tgz/download
     source-type: tar
 
     override-build: |
