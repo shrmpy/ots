@@ -35,7 +35,7 @@ parts:
     plugin: make
     source:
         - on armhf: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux32.tgz/download
-        - on arm64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux64.tgz/download
+        - on arm64: "https://downloads.sourceforge.net/project/opentaxsolver/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux64.tgz?ts=gAAAAABibLZVBlsXSDYyVCj-wxAFoMY-6t6QDaOgCK4LanwD_tP12zIRpqQUqKRxLJCXIziKxxaR4yZfYxYmDi59-_Z2nzRWxw%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fopentaxsolver%2Ffiles%2FOTS_2021%2Fv19.07_linux%2FOpenTaxSolver2021_19.07_linux64.tgz%2Fdownload"
         - on amd64: https://sourceforge.net/projects/opentaxsolver/files/OTS_2021/v19.07_linux/OpenTaxSolver2021_19.07_linux64.tgz/download
     source-type: tar
 
